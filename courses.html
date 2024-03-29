@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* CSS styles */
+    /* Paste your CSS styles here */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    width:100%;
+    display:flex;
+    align-items: center;
+    background-color:rgb(5, 5, 80);
+  }
+  .navbar h2{ 
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-left: 20px;
+  }
+  nav {
+    overflow: hidden;
+  }
+  .title{
+    padding:10px 10px;
+  }
+  nav a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 14px 20px;
+    padding-left: 50px;
+    background-color: inherit;
+    margin: 0;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    margin-left: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #555;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+.container {
+    max-width: 314px;
+    margin: 50px  30px auto;
+    padding: 61px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004d99;
+}
+.txtcontainer h2{
+    font-size: 40px;
+    margin-top: -377px;
+    margin-left: 405px;
+}
+.imgcontainer{
+    width:500px;
+    height: 500px;
+    margin-left: 800px;
+    margin-top:-14px;
+}
+.imgcontainer img{
+    width:300px;
+    height:300px;
+}
+.container1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.box {
+  width: 450px;
+  height: 600px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.box img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+.box h2{
+  font-size: 20px;
+  color: blue;
+  letter-spacing: 2px;
+  word-spacing: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.box p{
+  font-size: 16px;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  padding-top: 10px;
+  
+}
+.profile {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 65px 120px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+</style>
+<body>
+    <div class="navbar">
+        <h2>EqualLearn</h2>
+          <nav>
+            <a href="index.html" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Home</a>
+          <div class="dropdown">
+              <button class="dropbtn">Course</button>
+            <div class="dropdown-content">
+              <a href="DS.html">Data Structures</a>
+              <a href="algorithm.html">Algorithm</a>
+              <a href="OOPS.html">OOPS</a>
+            </div>
+          </div>
+      <div class="dropdown">
+        <button class="dropbtn">Study Materials</button>
+        <div class="dropdown-content">
+            <a href="dss.html">Data Structure</a>
+            <a href="algo.html">Algorithm</a>
+            <a href="oopss.html">OOPs</a>
+        </div>
+      </div>
+      <a href="#about">About</a>
+      <a href="contact.html">contact</a>
+    </nav>
+    </div>
+    <div class="container1">
+
+        <div class="box">
+            <img src="What-is-Data-Structures-and-Algorithms.jpg" alt="Image 1">
+            <h2>Data Structures</h2>
+            <p>
+                A Data Structures course <br>focuses on teaching students<br> about the organization, storage, and manipulation of data <br>in computer programs efficiently.</p>
+              <div class="profile" onclick="location.href='DS.html'">Go to Course</div>
+        </div>
+        <div class="box">
+            <img src="istockphoto-1500238408-170667a.webp" alt="Image 2">
+            <h2>Algorithm</h2>
+              <p>
+                An Algorithm course <br>focuses on teaching students <br>the fundamental concepts, techniques, and principles<br> involved in designing and analyzing<br> algorithms..</p>
+              <div class="profile" onclick="location.href='algorithm.html'">Go to Course</div>
+        </div>
+        <div class="box">
+            <img src="360_F_108965707_UhpFxvquwgXVfWlFpg9vYGJfz8mmZ33u.jpg" alt="Image 3">
+            <h2>OOP</h2>
+              <p>An Object-Oriented Programming (OOP)<br> course typically covers<br> the fundamental principles and concepts <br>of object-oriented programming,<br> a paradigm widely used in software development. </p>
+              <div class="profile" onclick="location.href='OOPS.html'">Go To Course</div>
+        </div>
+      </div>
+</body>
+</html>

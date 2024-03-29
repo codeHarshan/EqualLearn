@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar with Dropdown</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="navbar">
+    <h2>EqualLearn</h2>
+      <nav>
+      <div class="dropdown">
+          <button class="dropbtn">Course</button>
+        <div class="dropdown-content">
+          <a href="DS.html">Data Structures</a>
+          <a href="algorithm.html">Algorithm</a>
+          <a href="OOPS.html">OOPS</a>
+        </div>
+      </div>
+  <div class="dropdown">
+    <button class="dropbtn">Study Materials</button>
+    <div class="dropdown-content">
+        <a href="dss.html">Data Structure</a>
+        <a href="algo.html">Algorithm</a>
+        <a href="oopss.html">OOPs</a>
+    </div>
+  </div>
+  <a href="#about">About</a>
+  <a href="contact.html">contact</a>
+  <button onclick="location.href='aud.html'" id="login-btn">Login</button>
+</nav>
+</div>
+<div class="container">
+  <div class="subc">
+    <div class="textcontainer">
+        <h2>Equal <span style="color: blue;">Learn</span></h2>
+        <h3>Empowerment through Education</h3>
+        <h4>Bridging gaps , Breaking Barriers , Leveling up for All</h4>
+    </div>
+    <div class="imgcontainer">
+      <img src="shutterstock_2208430283-1.webp">
+      <button onclick="location.href='courses.html'" class="login-btn1">Explore courses</button>
+    </div>
+  </div>
+  <div class="description">
+    <h2>Description</h2>
+    <p>Our website, EqualLearn, is a revolutionary educational technology platform designed to address the pressing issue of limited access to quality education in underserved communities. With a focus on inclusivity and accessibility, our platform provides personalized learning content, facilitates interaction with qualified educators, and bridges the educational gap for individuals in rural areas and those with disabilities. Through innovative features such as voice command navigation, offline access, and optimized bandwidth usage, we aim to empower learners from all backgrounds to access educational resources and achieve their full potential. Join us in our mission to democratize education and create a more equitable future for all.</p>
+    <div class="imgcontainer1">
+      <img src="https://images.collegedunia.com/public/college_data/images/appImage/14939_SCE_New.jpg">
+      
+    </div>
+   
+  </div>
+</div>
+<div class="textc">
+  <h2 style="color: black;">Educators</h2>
+</div>
+
+<div class="container1">
+
+  <div class="box">
+      <img src="Employee-Journey-What-it-is-and-how-to-improve-it.jpg" alt="Image 1">
+      <h2>DENIS HALLS</h2>
+        ASST. PROFESSOR<br>
+        EDUCATIONAL TECHNOLOGY<br>
+        (91) 933-092-9083<br>
+        info@mycvdesigner.com<br>
+        New York, Us States</p>
+        <div class="profile" onclick="location.href='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'">Bob's Profile</div>
+  </div>
+  <div class="box">
+      <img src="the importance of employee recognition.webp" alt="Image 2">
+      <h2>DENIS HALLS</h2>
+        ASST. PROFESSOR<br>
+        EDUCATIONAL TECHNOLOGY<br>
+        (91) 933-092-9083<br>
+        info@mycvdesigner.com<br>
+        New York, Us States</p>
+        <div class="profile" onclick="location.href='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'">Bob's Profile</div>
+  </div>
+  <div class="box">
+      <img src="depositphotos_5140926-stock-photo-closeup-of-employee-in-the.jpg" alt="Image 3">
+      <h2>DENIS HALLS</h2>
+        <p>ASST. PROFESSOR<br>
+        EDUCATIONAL TECHNOLOGY<br>
+        (91) 933-092-9083<br>
+        info@mycvdesigner.com<br>
+        New York, Us States</p>
+        <div class="profile" onclick="location.href='https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile'">Bob's Profile</div>
+  </div>
+</div>
+<div class="footer">
+  <img src="equallearn (1).png" class="logo1">
+  <h1>EqualLearn</h1>
+  <h2 id="about">ABOUT US</h2>
+  <p class="us">Welcome to Level Up Education for All! We're on a mission to revolutionize learning by providing a low-cost,<br> accessible educational technology platform. Our platform offers personalized learning content and connects users with qualified educators,<br> bridging the educational gap for individuals in underserved communities.<br> Join us in transforming education and empowering learners worldwide.
+
+</p>
+</div>
+<script>
+// Function to change login button to profile icon after successful login
+function changeToProfileIcon() {
+  const loginBtn = document.getElementById("login-btn");
+  loginBtn.innerHTML = '<img width=20 height=20 src="—Pngtree—user icon_4479727.png"  alt="Profile">';
+  loginBtn.addEventListener("click", function() {
+    location.href = "profile.html"; // Redirect to profile page on click
+  });
+}
+
+// Check if user is logged in (example: user authentication)
+const isLoggedIn = true; // Change to true if user is logged in
+
+// Call changeToProfileIcon function if user is logged in
+if (isLoggedIn) {
+  changeToProfileIcon();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Recognition Login</title>
+<link rel="stylesheet" href="aud.css">
+</head>
+<body> <div class="navbar">
+    <h2>EqualLearn</h2>
+      <nav>
+        <a href="index.html" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Home</a>
+  <a href="#about">About</a>
+  <a href="contact.html">contact</a>
+  
+</nav>
+</div>
+
+<div class="container">
+<h2>Login</h2>
+<div>
+    <label for="email">Email:</label>
+    <input type="text" id="email">
+</div>
+<div>
+    <label for="phone">Phone No:</label>
+    <input type="text" id="phoneno">
+</div>
+<div>
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+    <input type="checkbox" id="showPassword">
+    <label for="showPassword">Show Password</label>
+    <button id="otpb">Send OTP</button>
+    <div>
+        <input placeholder="enter otp" type="text" id="otp">
+    </div>
+    
+</div>
+<button id="loginBtn">Login</button>
+<h4 onclick="location.href='signup.html' " style="font-size:10px ; padding: 10px 70px; cursor: pointer;">Dont have a Account ? Create One</h4>
+</div>
+<div class="txtcontainer">
+    <h2>Equal <span style="color:blue">Learn</span></h2>
+</div>
+<div class="imgcontainer">
+    <img src="equallearn (1).png">
+</div>
+
+<script>
+    document.getElementById("otp").style.visibility="hidden";
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    let recognitionActive = false;
+
+    // Function to start speech recognition
+    function startRecognition() {
+        if (!recognitionActive) {
+            recognition.start();
+            recognitionActive = true;
+        }
+    }
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        console.log('You said: ' + transcript);
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        // Regular expressions to match "my email is [email]" and "my password is [password]"
+        const emailRegex = /my email is (.+)/i;
+        const passwordRegex = /my password is (.+)/i;
+
+        // Check if the transcript matches the email pattern
+        const emailMatch = transcript.match(emailRegex);
+        if (emailMatch) {
+            let email = emailMatch[1];
+            email = email.replace(/\sat\s/i, "@").trim(); // Replace "at" with "@" and trim whitespace
+            emailInput.focus(); // Activate the email input field
+            emailInput.value = email.toLowerCase(); // Set the recognized email in lowercase as the value of the email input
+            passwordInput.value = ''; // Clear the password input
+            recognition.stop(); // Stop recognition temporarily
+            recognitionActive = false; // Reset recognition status
+            setTimeout(startRecognition, 500); // Restart recognition after a delay
+            return; // Exit the function to prevent setting the password again
+        }
+
+        // Check if the transcript matches the password pattern
+        const passwordMatch = transcript.match(passwordRegex);
+        if (passwordMatch) {
+            const password = passwordMatch[1];
+            passwordInput.focus(); // Activate the password input field
+            passwordInput.value = password.trim(); // Set the recognized password as the value of the password input
+            recognitionActive = false; // Reset recognition status
+        }
+    };
+
+    recognition.onerror = function(event) {
+        console.error('Speech recognition error detected: ' + event.error);
+        recognitionActive = false; // Reset recognition status if an error occurs
+    };
+
+    // Start speech recognition when the page loads
+    window.addEventListener("DOMContentLoaded", startRecognition);
+
+    // Start speech recognition when the email input field is focused
+    document.getElementById("email").addEventListener("focus", startRecognition);
+
+    // Toggle password visibility when the "Show Password" checkbox is clicked
+    document.getElementById("showPassword").addEventListener("change", function() {
+        const passwordInput = document.getElementById("password");
+        passwordInput.type = this.checked ? "text" : "password";
+    });
+
+    // Define loginBtn variable
+    const loginBtn = document.getElementById("loginBtn");
+
+    // Handle login button click event
+    loginBtn.addEventListener("click", function() {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        // Add your login logic here
+        console.log("Email:", email);
+        console.log("Password:", password);
+        // Example: perform login validation or submit form
+    });
+
+</script>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQWmhgxkS1lbJV90MKG88lKtM9PhLcMow",
+      authDomain: "auth-b8e59.firebaseapp.com",
+      projectId: "auth-b8e59",
+      storageBucket: "auth-b8e59.appspot.com",
+      messagingSenderId: "301719884393",
+      appId: "1:301719884393:web:f111a21b3cc4897d5bc8f8"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase();
+    const auth = getAuth();
+    
+    loginBtn.addEventListener('click',(e) =>{
+        var email = document.getElementById('email').value;
+  
+        var password = document.getElementById('password').value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                const dt = new Date();
+                update(ref(database, 'users/' + user.uid), {
+                    last_login: dt,
+                });
+                window.location.assign("second.html");
+                alert('User logged in!');
+                
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+</script>
+</html>

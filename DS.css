@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+.navbar{
+    width:100%;
+    display:flex;
+    align-items: center;
+    background-color:rgb(5, 5, 80);
+  }
+  .navbar h2{ 
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-left: 20px;
+  }
+  nav {
+    overflow: hidden;
+  }
+  .title{
+    padding:10px 10px;
+  }
+  nav a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 14px 20px;
+    padding-left: 50px;
+    background-color: inherit;
+    margin: 0;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    margin-left: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #555;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  /* styles.css */
+  .login-btn {
+    background-color: rgba(76, 175, 79, 0); /* Green */
+    border: 3px solid white;
+    color: white;
+    padding: 3px 28px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 700px;
+  }
+.side{
+    width:300px;
+    height:300px;
+    background-color: rgba(10, 95, 223, 0.622);
+    justify-content: left;
+    text-align: center;
+    margin-left:10px;
+}
+.chapter1{
+    margin-top: 10px;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);;
+}
+.chapter1 h2{
+    padding-top:30px; 
+}
+.chapter2{
+    margin-top: 10px;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);;
+}
+.chapter2 h2{
+    padding-top: 30px;
+}
+.chapter3{
+    margin-top: 10px;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);;
+}
+.chapter3 h2{
+    padding-top: 30px;
+}
+.chapter4{
+    margin-top: 10px;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);;
+}
+.chapter4 h2{
+    padding-top: 30px;
+}
+.videodiv{
+    width:900px;
+    height:400px;
+    margin-left: 400px;
+    margin-top: -300px;
+    background-color: black;
+
+
+}
+.videodiv video{
+    margin-top: 20px;
+}

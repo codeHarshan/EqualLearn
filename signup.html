@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Recognition Signup</title>
+<style>
+    /* CSS styles */
+    /* Paste your CSS styles here */
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    width:100%;
+    display:flex;
+    align-items: center;
+    background-color:rgb(5, 5, 80);
+  }
+  .navbar h2{ 
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    padding-left: 20px;
+  }
+  nav {
+    overflow: hidden;
+  }
+  .title{
+    padding:10px 10px;
+  }
+  nav a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #fff;
+    padding: 14px 20px;
+    padding-left: 50px;
+    background-color: inherit;
+    margin: 0;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    margin-left: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #555;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+.container {
+    max-width: 314px;
+    margin: 50px  30px auto;
+    padding: 61px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004d99;
+}
+.txtcontainer h2{
+    font-size: 40px;
+    margin-top: -377px;
+    margin-left: 405px;
+}
+.imgcontainer{
+    width:500px;
+    height: 500px;
+    margin-left: 800px;
+    margin-top:-14px;
+}
+.imgcontainer img{
+    width:300px;
+    height:300px;
+}
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <h2>EqualLearn</h2>
+          <nav>
+            <a href="index.html" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Home</a>
+      <a href="#about">About</a>
+      <a href="contact.html">contact</a>
+      
+    </nav>
+    </div>
+
+<div class="container">
+    <h2>Signup</h2>
+    <div>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email">
+    </div>
+    
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password">
+        <input type="checkbox" id="showPassword">
+        <label for="showPassword">Show Password</label>
+    </div>
+    <button id="signupBtn">Signup</button>
+    <h4 onclick="location.href='aud.html' " style="font-size:10px ; padding: 10px 70px; cursor: pointer;">Already have an Account ? Log in</h4>
+</div>
+<div class="txtcontainer">
+    <h2>Equal <span style="color:blue">Learn</span></h2>
+</div>
+<div class="imgcontainer">
+    <img src="equallearn (1).png">
+</div>
+
+<script>
+    // JavaScript code
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    let recognitionActive = false;
+
+    // Function to start speech recognition
+    function startRecognition() {
+        if (!recognitionActive) {
+            recognition.start();
+            recognitionActive = true;
+        }
+    }
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        console.log('You said: ' + transcript);
+        const fullnameInput = document.getElementById("fullname");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+
+        // Regular expressions to match "my name is [name]", "my email is [email]", and "my password is [password]"
+        const nameRegex = /my name is (.+)/i;
+        const emailRegex = /my email is (.+)/i;
+        const passwordRegex = /my password is (.+)/i;
+
+        // Check if the transcript matches the name pattern
+        const nameMatch = transcript.match(nameRegex);
+        if (nameMatch) {
+            const name = nameMatch[1];
+            fullnameInput.focus(); // Activate the fullname input field
+            fullnameInput.value = name.trim(); // Set the recognized name as the value of the fullname input
+            recognition.stop(); // Stop recognition temporarily
+            recognitionActive = false; // Reset recognition status
+            setTimeout(startRecognition, 500); // Restart recognition after a delay
+            return; // Exit the function to prevent setting other fields again
+        }
+
+        // Check if the transcript matches the email pattern
+        const emailMatch = transcript.match(emailRegex);
+        if (emailMatch) {
+            let email = emailMatch[1];
+            email = email.replace(/\sat\s/i, "@").trim(); // Replace "at" with "@" and trim whitespace
+            emailInput.focus(); // Activate the email input field
+            emailInput.value = email.toLowerCase(); // Set the recognized email in lowercase as the value of the email input
+            recognition.stop(); // Stop recognition temporarily
+            recognitionActive = false; // Reset recognition status
+            setTimeout(startRecognition, 500); // Restart recognition after a delay
+            return; // Exit the function to prevent setting other fields again
+        }
+
+        // Check if the transcript matches the password pattern
+        const passwordMatch = transcript.match(passwordRegex);
+        if (passwordMatch) {
+            const password = passwordMatch[1];
+            passwordInput.focus(); // Activate the password input field
+            passwordInput.value = password.trim(); // Set the recognized password as the value of the password input
+            recognitionActive = false; // Reset recognition status
+        }
+    };
+
+    recognition.onerror = function(event) {
+        console.error('Speech recognition error detected: ' + event.error);
+        recognitionActive = false; // Reset recognition status if an error occurs
+    };
+
+    // Start speech recognition when the page loads
+    window.addEventListener("DOMContentLoaded", startRecognition);
+
+    // Start speech recognition when the fullname input field is focused
+    document.getElementById("fullname").addEventListener("focus", startRecognition);
+
+    // Start speech recognition when the email input field is focused
+    document.getElementById("email").addEventListener("focus", startRecognition);
+
+    // Toggle password visibility
+    document.getElementById("showPassword").addEventListener("change", function() {
+        const passwordInput = document.getElementById("password");
+        passwordInput.type = this.checked ? "text" : "password";
+    });
+
+    // Handle signup button click event
+    document.getElementById("signupBtn").addEventListener("click", function() {
+        const fullname = document.getElementById("fullname").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        // Add your signup logic here
+        console.log("Full Name:", fullname);
+        console.log("Email:", email);
+        console.log("Password:", password);
+        // Example: perform signup validation or submit form
+    });
+
+</script>
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getDatabase, set, ref} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQWmhgxkS1lbJV90MKG88lKtM9PhLcMow",
+      authDomain: "auth-b8e59.firebaseapp.com",
+      projectId: "auth-b8e59",
+      storageBucket: "auth-b8e59.appspot.com",
+      messagingSenderId: "301719884393",
+      appId: "1:301719884393:web:f111a21b3cc4897d5bc8f8"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+
+
+    signupBtn.addEventListener('click',(e) =>{
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var fullname = document.getElementById('fullname').value;
+
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+
+       set( ref(database, 'users/' + user.uid),{
+            fullname: fullname,
+            email: email,
+            password: password
+        })
+        window.location.assign("aud.html");
+        alert('user created');
+        // ...
+         })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(errorMessage);
+        // ..
+         });
+
+    });
+  </script>
+</html>
