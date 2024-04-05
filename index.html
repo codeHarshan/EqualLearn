@@ -10,6 +10,7 @@
   <div class="navbar">
     <h2>EqualLearn</h2>
     <nav>
+      <ul id=menulist>
       <div class="dropdown">
         <button class="dropbtn">Course</button>
         <div class="dropdown-content">
@@ -28,8 +29,11 @@
       </div>
       <a href="#about" id="aboutBtn">About</a>
       <a href="contact.html" id="contactBtn">contact</a>
+      </ul>
+         </nav>
       <button onclick="location.href='aud.html'" id="login-btn">Login</button>
-    </nav>
+      <img src="menu.png" class="menu-icon" onclick="togglemenu()">
+   
   </div>
   <div class="container">
     <div class="subc">
@@ -94,6 +98,17 @@
     </p>
   </div>
   <script>
+        var menuList = document.getElementById("menuList");
+    menuList.style.maxHeight='0px';
+    function togglemenu(){
+        if(menuList.style.maxHeight == '0px')
+        {
+            menuList.style.maxHeight='200px';
+        }
+        else{
+            menuList.style.maxHeight='0px';
+        }
+    }
     const exploreBtn = document.getElementById('exploreBtn');
     const aboutBtn = document.getElementById('aboutBtn');
     const loginBtn = document.getElementById('login-btn');
